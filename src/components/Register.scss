@@ -1,11 +1,34 @@
+// OTP popup styles
+.otp-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+// Style the form inside popup
+.otp-popup .register-form {
+  background: rgba(0,0,0,0.85);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.7);
+}
 .register-container {
   max-width: 400px;
   margin: 40px auto;
   padding: 2rem;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+  background: transparent;
   text-align: center;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
 }
 .register-toggle {
   display: flex;

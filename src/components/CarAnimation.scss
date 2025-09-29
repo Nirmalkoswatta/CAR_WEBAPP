@@ -1,0 +1,72 @@
+.car-animation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  position: relative;
+}
+.car-body {
+  position: relative;
+  width: 80px;
+  height: 30px;
+}
+.car-top {
+  position: absolute;
+  left: 18px;
+  top: -12px;
+  width: 44px;
+  height: 16px;
+  background: #fff;
+  border-radius: 8px 8px 0 0;
+}
+.car-main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 80px;
+  height: 20px;
+  background: #fff;
+  border-radius: 10px 10px 8px 8px;
+}
+.car-window {
+  position: absolute;
+  left: 28px;
+  top: -6px;
+  width: 24px;
+  height: 12px;
+  background: #007bff;
+  border-radius: 6px 6px 4px 4px;
+}
+.car-wheel {
+  position: absolute;
+  bottom: -8px;
+  width: 14px;
+  height: 14px;
+  background: #222;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  animation: wheel-spin 0.7s linear infinite;
+}
+.car-wheel-left {
+  left: 10px;
+}
+.car-wheel-right {
+  right: 10px;
+}
+@keyframes wheel-spin {
+  100% { transform: rotate(360deg); }
+}
+.car-road {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100px;
+  height: 6px;
+  background: repeating-linear-gradient(90deg, #fff 0 10px, transparent 10px 20px);
+  opacity: 0.3;
+  border-radius: 3px;
+  animation: road-move 1.2s linear infinite;
+}
+@keyframes road-move {
+  100% { background-position-x: 100px; }
+}
