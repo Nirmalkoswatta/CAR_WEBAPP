@@ -30,6 +30,10 @@ const Register = ({ onLoginLink }) => {
     }
     // Send OTP
     try {
+      if (window.recaptchaVerifier) {
+        window.recaptchaVerifier.clear();
+        window.recaptchaVerifier = undefined;
+      }
       window.recaptchaVerifier = new RecaptchaVerifier(
         "recaptcha-container-register",
         { size: "invisible" },
@@ -42,6 +46,10 @@ const Register = ({ onLoginLink }) => {
       setMessage("");
     } catch (error) {
       setMessage(error.message);
+      if (window.recaptchaVerifier) {
+        window.recaptchaVerifier.clear();
+        window.recaptchaVerifier = undefined;
+      }
     }
   };
 
