@@ -3,7 +3,6 @@ import "./Dashboard.scss";
 import React from "react";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import StarfallBackground from "./StarfallBackground";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -11,7 +10,7 @@ const Dashboard = () => {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
-        navigate("/login");
+  navigate("/");
       })
       .catch((error) => {
         alert("Logout failed: " + error.message);
@@ -19,8 +18,7 @@ const Dashboard = () => {
   };
 
   return (
-  <div className="App" style={{ minHeight: '100vh', background: '#fff', color: '#111', position: 'relative', zIndex: 1 }}>
-      <StarfallBackground />
+    <div className="App" style={{ minHeight: '100vh', background: '#fff', color: '#111', position: 'relative', zIndex: 1 }}>
       <button
         onClick={handleLogout}
         style={{

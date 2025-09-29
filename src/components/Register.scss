@@ -1,3 +1,34 @@
+// Animated shadow and highlight for login/register titles
+.animated-shadow {
+  color: #111;
+  text-shadow:
+    0 2px 8px rgba(30, 144, 255, 0.18),
+    0 0 16px #bfe9ff,
+    0 0 2px #fff;
+  animation: shadowPulse 1.8s infinite alternate;
+}
+
+.highlight {
+  background: linear-gradient(90deg, #fffbe6 60%, #ffe9b3 100%);
+  border-radius: 8px;
+  padding: 0.2em 0.8em;
+  box-shadow: 0 2px 12px rgba(255, 210, 77, 0.12);
+}
+
+@keyframes shadowPulse {
+  0% {
+    text-shadow:
+      0 2px 8px rgba(30, 144, 255, 0.18),
+      0 0 16px #bfe9ff,
+      0 0 2px #fff;
+  }
+  100% {
+    text-shadow:
+      0 4px 16px rgba(30, 144, 255, 0.32),
+      0 0 32px #bfe9ff,
+      0 0 4px #fff;
+  }
+}
 // OTP popup styles
 .otp-popup {
   position: fixed;
@@ -59,7 +90,7 @@
   border-radius: 18px;
   padding: 2rem 2.5rem 1.5rem 2.5rem;
   box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-  border: 1.5px solid #e0e0e0;
+  /* border removed for cleaner look */
   color: #000;
   width: 100%;
   max-width: 400px;

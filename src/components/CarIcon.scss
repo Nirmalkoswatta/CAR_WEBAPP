@@ -1,0 +1,27 @@
+.car-icon {
+  width: 36px;
+  height: 36px;
+  display: block;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  flex-shrink: 0;
+
+  .car-body {
+    fill: var(--car-primary);
+  }
+
+  .windshield {
+    fill: var(--car-glass);
+  }
+
+  .grille {
+    fill: rgba(255, 255, 255, 0.28);
+  }
+
+  .headlight {
+    fill: var(--car-accent);
+  }
+
+  .wheel {
+    fill: var(--car-wheel);
+  }
+}

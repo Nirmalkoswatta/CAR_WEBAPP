@@ -1,14 +1,18 @@
 import React from "react";
+import CarIcon from "./CarIcon";
 import "./Navbar.scss";
 
-
-const Navbar = () => (
-  <nav className="navbar">
-    <div className="navbar-center">
-  <img src={process.env.PUBLIC_URL + '/image.png'} alt="Car Logo" style={{ height: '2.2rem', marginRight: '1rem', verticalAlign: 'middle' }} />
-  <span className="navbar-logo">CAR AI WEB</span>
-    </div>
-  </nav>
-);
+const Navbar = () => {
+  return (
+    <nav className="navbar">
+      <div className="navbar-center">
+        <a href="/" className="nav-brand" aria-label="Home">
+          <CarIcon />
+          <span className="navbar-logo">CAR AI</span>
+        </a>
+      </div>
+    </nav>
+  );
+};
 
 export default Navbar;

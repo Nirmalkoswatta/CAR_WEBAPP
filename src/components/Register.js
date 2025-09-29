@@ -1,9 +1,13 @@
+
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import "./Register.scss";
+import AuthIllustration from "./AuthIllustration";
+import "./AuthPage.scss";
 
 const Register = ({ onLoginLink }) => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,29 +36,63 @@ const Register = ({ onLoginLink }) => {
     }
   };
 
+  const handleLoginLink = () => {
+    if (onLoginLink) {
+      onLoginLink();
+    } else {
+      navigate("/");
+    }
+  };
+
   return (
-    <div className="register-container">
-      <form onSubmit={handleRegister} className="register-form modern-form">
-        <h2 className="form-title">Register</h2>
-        <div className="form-group">
-          <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} required className="form-input" />
+    <div className="auth-page">
+      <div className="auth-left">
+        <h2>Welcome!</h2>
+  <p><span className="highlight">This is the Car Modification AI tool. Use it to identify and mention parts of your vehicle. The integrated ChatBot can assist you with further details and support for your car modification journey.</span></p>
+        <button className="auth-signup-btn" onClick={handleLoginLink}>SIGN IN</button>
+        <div className="auth-illustration">
+          <AuthIllustration />
         </div>
-        <div className="form-group">
-          <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required className="form-input" />
-        </div>
-        <div className="form-group">
-          <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required className="form-input" />
-        </div>
-        <div className="form-group">
-          <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required className="form-input" />
-        </div>
-        <button type="submit" className="form-button">Register</button>
-        {message && <p className="register-message">{message}</p>}
-        <p className="form-link">
-          Already have an account?{' '}
-          <span className="register-link" onClick={onLoginLink}>Login here</span>
-        </p>
-      </form>
+      </div>
+      <div className="auth-right">
+        <div className="auth-form-title">Sign up</div>
+        <form onSubmit={handleRegister} className="auth-form">
+          <input
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            required
+            autoComplete="name"
+          />
+          <input
+            type="email"
+            placeholder="Username"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+            autoComplete="username"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+            autoComplete="new-password"
+          />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={e => setConfirmPassword(e.target.value)}
+            required
+            autoComplete="new-password"
+          />
+          <button type="submit">REGISTER</button>
+          {message && <p className="register-message">{message}</p>}
+        </form>
+      </div>
     </div>
   );
 };
