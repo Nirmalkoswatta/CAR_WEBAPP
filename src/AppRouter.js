@@ -1,3 +1,5 @@
+import Navbar from './components/Navbar';
+import { getAuth } from 'firebase/auth';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -10,6 +12,12 @@ import Dashboard from './components/Dashboard';
 function App() {
   return (
     <Router>
+      {/* Pass user only for dashboard route to show username */}
+      {window.location.pathname === '/dashboard' ? (
+        <Navbar user={getAuth().currentUser} />
+      ) : (
+        <Navbar />
+      )}
       <div
         className="App"
         style={{

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase';
 import '../components/Register.scss';
 
@@ -23,9 +23,9 @@ const Register = () => {
       return;
     }
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      // Optionally save name to user profile here
-      navigate('/dashboard');
+  const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  await updateProfile(userCredential.user, { displayName: name });
+  navigate('/dashboard');
     } catch (err) {
       setError('Registration failed. Email may already be in use.');
     }
