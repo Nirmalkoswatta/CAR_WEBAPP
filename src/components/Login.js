@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import AuthIllustration from "./AuthIllustration";
+import CarAnimation from "./CarAnimation";
 import "./AuthPage.scss";
 
 const Login = ({ onRegisterLink }) => {
@@ -38,12 +38,12 @@ const Login = ({ onRegisterLink }) => {
   return (
     <div className="auth-page">
       <div className="auth-left">
-        <h2>New here ?</h2>
-  <p>This is the Car Modification AI tool. Use it to identify and mention parts of your vehicle. The integrated ChatBot can assist you with further details and support for your car modification journey.</p>
-        <button className="auth-signup-btn" onClick={handleRegisterLink}>SIGN UP</button>
-        <div className="auth-illustration">
-          <AuthIllustration />
+        <div className="car-animation fade-in">
+          <CarAnimation />
         </div>
+        <h2>New here ?</h2>
+        <p>This is the Car Modification AI tool. Use it to identify and mention parts of your vehicle. The integrated ChatBot can assist you with further details and support for your car modification journey.</p>
+        <button className="auth-signup-btn" onClick={handleRegisterLink}>SIGN UP</button>
       </div>
       <div className="auth-right">
         <div className="auth-form-title">Sign in</div>

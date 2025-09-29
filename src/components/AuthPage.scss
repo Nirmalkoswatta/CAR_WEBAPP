@@ -43,10 +43,30 @@
   color: #111;
 }
 
-.auth-left .auth-illustration {
-  margin: 2.5rem 0 0 0;
+
+.car-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5rem 0 1.5rem 0;
   max-width: 320px;
   width: 100%;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 1.2s ease 0.1s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .auth-left .auth-signup-btn {
