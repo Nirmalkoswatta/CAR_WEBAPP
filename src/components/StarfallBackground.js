@@ -22,7 +22,7 @@ const StarfallBackground = () => {
 
     function draw() {
       ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = "#fff";
+  ctx.fillStyle = "#b0b0b0";
       stars.forEach(star => {
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);

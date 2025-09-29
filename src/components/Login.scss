@@ -2,13 +2,12 @@
   max-width: 400px;
   margin: 40px auto;
   padding: 2rem;
-  background: transparent;
+  background: #fff;
   border-radius: 16px;
-  box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
   text-align: center;
-  backdrop-filter: blur(8px);
   border: none;
-  color: #fff;
+  color: #000;
 }
 
 .login-toggle {
@@ -16,15 +15,15 @@
   justify-content: center;
   margin-bottom: 1rem;
   button {
-    background: #eee;
+  background: #eee;
     border: none;
     padding: 0.5rem 1rem;
     margin: 0 0.5rem;
     border-radius: 5px;
     cursor: pointer;
     &.active {
-      background: #007bff;
-      color: #fff;
+  background: #007bff;
+  color: #fff;
     }
   }
 }
@@ -36,17 +35,20 @@
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background: #fff;
+    color: #000;
   }
   button {
-    background: #007bff;
+    background: #28a745;
     color: #fff;
     border: none;
     padding: 0.5rem;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.2s;
+    font-weight: 600;
     &:hover {
-      background: #0056b3;
+      background: #218838;
     }
   }
 }

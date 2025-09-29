@@ -22,12 +22,11 @@
   max-width: 400px;
   margin: 40px auto;
   padding: 2rem;
-  color: #fff;
+  color: #000;
   border-radius: 16px;
-  box-shadow: 0 4px 32px rgba(0,0,0,0.4);
-  background: transparent;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+  background: #fff;
   text-align: center;
-  backdrop-filter: blur(8px);
   border: none;
 }
 .register-toggle {
@@ -55,19 +54,17 @@
 
 // Modern, stylish, transparent form styles (shared by login/register)
 .modern-form {
-  background: rgba(0,0,0,0.6);
+  background: #fff;
   border-radius: 18px;
   padding: 2rem 2.5rem 1.5rem 2.5rem;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.7);
-  backdrop-filter: blur(10px);
-  border: 1.5px solid rgba(255,255,255,0.18);
-  color: #fff;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  border: 1.5px solid #e0e0e0;
+  color: #000;
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
 }
-.form-title {
-  color: #fff;
+  color: #000;
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
@@ -79,10 +76,9 @@
   flex-direction: column;
   align-items: stretch;
 }
-.form-input {
-  background: rgba(255,255,255,0.08);
-  color: #fff;
-  border: 1.5px solid rgba(255,255,255,0.18);
+  background: #fff;
+  color: #000;
+  border: 1.5px solid #e0e0e0;
   border-radius: 8px;
   padding: 0.75rem 1rem;
   font-size: 1rem;
@@ -90,9 +86,8 @@
   transition: border 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
-.form-input::placeholder {
-  color: #e0e0e0;
-  opacity: 0.8;
+  color: #888;
+  opacity: 1;
 }
 .form-input:focus {
   border: 1.5px solid #28a745;
@@ -115,12 +110,10 @@
   background: linear-gradient(90deg, #218838 60%, #28a745 100%);
   box-shadow: 0 4px 16px rgba(40,167,69,0.18);
 }
-.form-link {
-  color: #fff;
+  color: #000;
   margin-top: 1.2rem;
   font-size: 1rem;
 }
-.register-link {
   color: #28a745;
   text-decoration: underline;
   cursor: pointer;
