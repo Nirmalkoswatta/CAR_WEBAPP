@@ -1,4 +1,3 @@
-import Navbar from './components/Navbar';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -18,11 +17,8 @@ function App() {
           color: '#111',
           position: 'relative',
           zIndex: 1,
-          background: `url(${process.env.PUBLIC_URL + '/back2.jpg'}) no-repeat center center fixed`,
-          backgroundSize: 'cover',
         }}
       >
-  <Navbar />
   <div style={{ position: 'relative', zIndex: 2 }}>
           <Routes>
             <Route path="/" element={<Login />} />

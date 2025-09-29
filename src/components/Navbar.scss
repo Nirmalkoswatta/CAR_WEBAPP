@@ -31,6 +31,22 @@
   transition: box-shadow 0.2s, background 0.2s;
 }
 
+.navbar-title {
+  flex: 1;
+}
+
+.navbar-user {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1976d2;
+  margin-left: auto;
+  margin-right: 12px;
+  background: #e3f0ff;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(30,144,255,0.04);
+}
+
 .navbar-center {
   flex: 1;
   display: flex;
