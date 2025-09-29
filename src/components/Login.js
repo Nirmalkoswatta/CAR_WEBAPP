@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import "./Login.scss";
 
 const Login = ({ onRegisterLink }) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // Only email/password login
@@ -14,7 +16,8 @@ const Login = ({ onRegisterLink }) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      setMessage("Login successful!");
+      setMessage("");
+      navigate("/dashboard");
     } catch (error) {
       setMessage(error.message);
     }
