@@ -24,17 +24,21 @@ const Login = ({ onRegisterLink }) => {
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleEmailLogin} className="login-form">
-        <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
-        <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
-        <button type="submit">Login</button>
+      <form onSubmit={handleEmailLogin} className="login-form modern-form">
+        <h2 className="form-title">Login</h2>
+        <div className="form-group">
+          <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required className="form-input" />
+        </div>
+        <div className="form-group">
+          <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required className="form-input" />
+        </div>
+        <button type="submit" className="form-button">Login</button>
+        {message && <p className="login-message">{message}</p>}
+        <p className="form-link">
+          Don't have an account?{' '}
+          <span className="register-link" onClick={onRegisterLink}>Register here</span>
+        </p>
       </form>
-      {message && <p className="login-message">{message}</p>}
-      <p style={{marginTop: '1rem'}}>
-        Don't have an account?{' '}
-        <span style={{color: '#fff', textDecoration: 'underline', cursor: 'pointer'}} onClick={onRegisterLink}>Register here</span>
-      </p>
     </div>
   );
 };

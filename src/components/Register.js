@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { auth } from "../firebase";
-import { createUserWithEmailAndPassword, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import "./Register.scss";
 
 const Register = ({ onLoginLink }) => {
@@ -8,12 +8,10 @@ const Register = ({ onLoginLink }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [phone, setPhone] = useState("");
-  const [otp, setOtp] = useState("");
-  const [showOtpPopup, setShowOtpPopup] = useState(false);
+  // ...existing code...
   const [message, setMessage] = useState("");
 
-  // Register with email, password, name, phone
+  // Register with email, password, name
   const handleRegister = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -24,64 +22,8 @@ const Register = ({ onLoginLink }) => {
       setMessage("Name is required.");
       return;
     }
-    if (!phone.trim()) {
-      setMessage("Phone number is required.");
-      return;
-    }
-    // Send OTP
     try {
-      if (window.recaptchaVerifier) {
-        window.recaptchaVerifier.clear();
-        window.recaptchaVerifier = undefined;
-      }
-      window.recaptchaVerifier = new RecaptchaVerifier(
-        "recaptcha-container-register",
-        { size: "invisible" },
-        auth
-      );
-      const appVerifier = window.recaptchaVerifier;
-      const confirmationResult = await signInWithPhoneNumber(auth, phone, appVerifier);
-      window.confirmationResult = confirmationResult;
-      setShowOtpPopup(true);
-      setMessage("");
-    } catch (error) {
-      setMessage(error.message);
-      if (window.recaptchaVerifier) {
-        window.recaptchaVerifier.clear();
-        window.recaptchaVerifier = undefined;
-      }
-    }
-  };
-
-  // Phone Register
-  const setupRecaptcha = () => {
-    window.recaptchaVerifier = new RecaptchaVerifier(
-      "recaptcha-container-register",
-      { size: "invisible" },
-      auth
-    );
-  };
-
-  const handlePhoneRegister = async (e) => {
-    e.preventDefault();
-    setupRecaptcha();
-    const appVerifier = window.recaptchaVerifier;
-    try {
-      const confirmationResult = await signInWithPhoneNumber(auth, phone, appVerifier);
-      window.confirmationResult = confirmationResult;
-      setMessage("OTP sent to your phone.");
-    } catch (error) {
-      setMessage(error.message);
-    }
-  };
-
-  const verifyOtp = async (e) => {
-    e.preventDefault();
-    try {
-      await window.confirmationResult.confirm(otp);
-      // Register user in Firebase Auth
       await createUserWithEmailAndPassword(auth, email, password);
-      setShowOtpPopup(false);
       setMessage("");
       alert("Registration successful! You can now log in.");
       onLoginLink();
@@ -92,29 +34,27 @@ const Register = ({ onLoginLink }) => {
 
   return (
     <div className="register-container">
-      <h2>Register</h2>
-      <form onSubmit={handleRegister} className="register-form">
-        <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} required />
-        <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
-        <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
-        <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required />
-        <input type="tel" placeholder="Phone (+1234567890)" value={phone} onChange={e => setPhone(e.target.value)} required />
-        <div id="recaptcha-container-register"></div>
-        <button type="submit">Register</button>
-      </form>
-      {showOtpPopup && (
-        <div className="otp-popup">
-          <form onSubmit={verifyOtp} className="register-form">
-            <input type="text" placeholder="Enter OTP" value={otp} onChange={e => setOtp(e.target.value)} required />
-            <button type="submit">Verify OTP</button>
-          </form>
+      <form onSubmit={handleRegister} className="register-form modern-form">
+        <h2 className="form-title">Register</h2>
+        <div className="form-group">
+          <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} required className="form-input" />
         </div>
-      )}
-      {message && <p className="register-message">{message}</p>}
-      <p style={{marginTop: '1rem'}}>
-        Already have an account?{' '}
-        <span style={{color: '#fff', textDecoration: 'underline', cursor: 'pointer'}} onClick={onLoginLink}>Login here</span>
-      </p>
+        <div className="form-group">
+          <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required className="form-input" />
+        </div>
+        <div className="form-group">
+          <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required className="form-input" />
+        </div>
+        <div className="form-group">
+          <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required className="form-input" />
+        </div>
+        <button type="submit" className="form-button">Register</button>
+        {message && <p className="register-message">{message}</p>}
+        <p className="form-link">
+          Already have an account?{' '}
+          <span className="register-link" onClick={onLoginLink}>Login here</span>
+        </p>
+      </form>
     </div>
   );
 };
