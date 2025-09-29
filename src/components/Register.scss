@@ -22,7 +22,7 @@
   max-width: 400px;
   margin: 40px auto;
   padding: 2rem;
-  color: #000;
+  color: #111;
   border-radius: 16px;
   box-shadow: 0 4px 32px rgba(0,0,0,0.08);
   background: #fff;
@@ -53,6 +53,7 @@
 }
 
 // Modern, stylish, transparent form styles (shared by login/register)
+  
 .modern-form {
   background: #fff;
   border-radius: 18px;
@@ -64,6 +65,8 @@
   max-width: 400px;
   margin: 0 auto;
 }
+
+.modern-form-title {
   color: #000;
   font-size: 2rem;
   font-weight: 700;
@@ -76,6 +79,8 @@
   flex-direction: column;
   align-items: stretch;
 }
+
+.form-input {
   background: #fff;
   color: #000;
   border: 1.5px solid #e0e0e0;
@@ -86,6 +91,8 @@
   transition: border 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
+
+.form-input::placeholder {
   color: #888;
   opacity: 1;
 }
@@ -106,14 +113,19 @@
   box-shadow: 0 2px 8px rgba(40,167,69,0.08);
   transition: background 0.2s, box-shadow 0.2s;
 }
+
 .form-button:hover {
   background: linear-gradient(90deg, #218838 60%, #28a745 100%);
   box-shadow: 0 4px 16px rgba(40,167,69,0.18);
 }
+
+.register-info {
   color: #000;
   margin-top: 1.2rem;
   font-size: 1rem;
 }
+
+.register-link {
   color: #28a745;
   text-decoration: underline;
   cursor: pointer;
@@ -121,9 +133,11 @@
   font-weight: 500;
   transition: color 0.2s;
 }
+
 .register-link:hover {
   color: #218838;
 }
+
 .register-message {
   margin-top: 1rem;
   color: #d9534f;

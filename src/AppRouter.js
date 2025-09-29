@@ -9,7 +9,7 @@ import Navbar from './components/Navbar';
 function App() {
   return (
     <Router>
-      <div className="App" style={{ minHeight: '100vh', background: '#000', position: 'relative', zIndex: 1 }}>
+      <div className="App" style={{ minHeight: '100vh', background: '#fff', color: '#111', position: 'relative', zIndex: 1 }}>
         <StarfallBackground />
         <div style={{ position: 'relative', zIndex: 2 }}>
           <Navbar />

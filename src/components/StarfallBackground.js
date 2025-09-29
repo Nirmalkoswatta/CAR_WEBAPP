@@ -7,10 +7,11 @@ const StarfallBackground = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
+  let width = window.innerWidth;
+  let height = window.innerHeight;
+  canvas.width = width;
+  canvas.height = height;
+  // Set canvas background to transparent (no fillRect with black)
 
     let stars = Array.from({ length: 120 }, () => ({
       x: Math.random() * width,
@@ -22,7 +23,8 @@ const StarfallBackground = () => {
 
     function draw() {
       ctx.clearRect(0, 0, width, height);
-  ctx.fillStyle = "#b0b0b0";
+      // No background fill, keep transparent
+      ctx.fillStyle = "#b0b0b0";
       stars.forEach(star => {
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
