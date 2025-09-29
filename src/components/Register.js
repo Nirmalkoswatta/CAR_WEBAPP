@@ -1,96 +1,85 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
+import '../components/Register.scss';
 
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import CarAnimation from "./CarAnimation";
-import "./AuthPage.scss";
 
-const Register = ({ onLoginLink }) => {
+import '../components/Register.scss';
+
+const Register = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  // ...existing code...
-  const [message, setMessage] = useState("");
 
-  // Register with email, password, name
   const handleRegister = async (e) => {
     e.preventDefault();
+    setError('');
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match.");
-      return;
-    }
-    if (!name.trim()) {
-      setMessage("Name is required.");
+      setError('Passwords do not match.');
       return;
     }
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      setMessage("");
-      alert("Registration successful! You can now log in.");
-      onLoginLink();
-    } catch (error) {
-      setMessage(error.message);
-    }
-  };
-
-  const handleLoginLink = () => {
-    if (onLoginLink) {
-      onLoginLink();
-    } else {
-      navigate("/");
+      // Optionally save name to user profile here
+      navigate('/dashboard');
+    } catch (err) {
+      setError('Registration failed. Email may already be in use.');
     }
   };
 
   return (
-    <div className="auth-page">
-      <div className="auth-left">
-        <div className="car-animation fade-in">
-          <CarAnimation />
-        </div>
-        <h2>Welcome!</h2>
-        <p>This is the Car Modification AI tool. Use it to identify and mention parts of your vehicle. The integrated ChatBot can assist you with further details and support for your car modification journey.</p>
-        <button className="auth-signup-btn" onClick={handleLoginLink}>SIGN IN</button>
-      </div>
-      <div className="auth-right">
-        <div className="auth-form-title">Sign up</div>
-        <form onSubmit={handleRegister} className="auth-form">
-          <input
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={e => setName(e.target.value)}
-            required
-            autoComplete="name"
-          />
-          <input
-            type="email"
-            placeholder="Username"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-            autoComplete="username"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            required
-            autoComplete="new-password"
-          />
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={e => setConfirmPassword(e.target.value)}
-            required
-            autoComplete="new-password"
-          />
-          <button type="submit">REGISTER</button>
-          {message && <p className="register-message">{message}</p>}
+  <div className="auth-center-bg">
+      <div className="auth-card">
+        <div className="auth-title">Create Account</div>
+        <form className="modern-form" onSubmit={handleRegister} autoComplete="off">
+          <div className="form-group">
+            <input
+              className="form-input"
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              autoFocus
+            />
+          </div>
+          <div className="form-group">
+            <input
+              className="form-input"
+              type="email"
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              className="form-input"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              className="form-input"
+              type="password"
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </div>
+          {error && <div className="login-message">{error}</div>}
+          <button className="form-button" type="submit">Register</button>
+          <button type="button" className="form-button secondary" onClick={() => window.location.href = 'http://localhost:3000/'}>Already have an account?</button>
         </form>
       </div>
     </div>

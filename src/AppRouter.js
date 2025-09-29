@@ -1,3 +1,4 @@
+import Navbar from './components/Navbar';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -21,7 +22,8 @@ function App() {
           backgroundSize: 'cover',
         }}
       >
-        <div style={{ position: 'relative', zIndex: 2 }}>
+  <Navbar />
+  <div style={{ position: 'relative', zIndex: 2 }}>
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />

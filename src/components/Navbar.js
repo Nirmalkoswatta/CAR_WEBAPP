@@ -5,12 +5,7 @@ import "./Navbar.scss";
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <div className="navbar-center">
-        <a href="/" className="nav-brand" aria-label="Home">
-          <CarIcon />
-          <span className="navbar-logo">CAR AI</span>
-        </a>
-      </div>
+      <div className="navbar-title">Car Modification Web APP</div>
     </nav>
   );
 };

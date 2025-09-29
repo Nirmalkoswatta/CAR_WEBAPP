@@ -18,7 +18,21 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="App" style={{ minHeight: '100vh', background: '#fff', color: '#111', position: 'relative', zIndex: 1 }}>
+    <div
+      className="App"
+      style={{
+        minHeight: '100dvh',
+        width: '100vw',
+        background: `url(${process.env.PUBLIC_URL + '/back2.jpg'}) no-repeat center center fixed`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        color: '#111',
+        position: 'relative',
+        zIndex: 1,
+        overflow: 'hidden',
+      }}
+    >
       <button
         onClick={handleLogout}
         style={{
@@ -26,19 +40,19 @@ const Dashboard = () => {
           top: 24,
           right: 32,
           zIndex: 10,
-          background: '#28a745',
+          background: '#e53935',
           color: '#fff',
           border: 'none',
           borderRadius: 8,
           padding: '0.6rem 1.2rem',
           fontWeight: 600,
           fontSize: '1rem',
-          boxShadow: '0 2px 8px rgba(40,167,69,0.08)',
+          boxShadow: '0 2px 8px rgba(229,57,53,0.08)',
           cursor: 'pointer',
           transition: 'background 0.2s',
         }}
-        onMouseOver={e => e.currentTarget.style.background = '#218838'}
-        onMouseOut={e => e.currentTarget.style.background = '#28a745'}
+        onMouseOver={e => e.currentTarget.style.background = '#b71c1c'}
+        onMouseOut={e => e.currentTarget.style.background = '#e53935'}
       >
         Logout
       </button>
