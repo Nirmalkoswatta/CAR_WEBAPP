@@ -16,15 +16,14 @@ const Navbar = ({ user }) => {
   return (
     <nav className="navbar">
       <div className="navbar-title">Car Modification Web APP</div>
-      {user && (user.displayName || user.email) && (
-        <div className="navbar-actions">
-          {user && (user.displayName || user.email) && (
-            <div className="navbar-user">{user.displayName ? user.displayName : user.email}</div>
-          )}
-          {showLogout && (
-            <button className="navbar-logout" onClick={handleLogout}>Logout</button>
-          )}
-        </div>
+      <div className="navbar-actions">
+        {user && (user.displayName || user.email) && (
+          <div className="navbar-user">{user.displayName ? user.displayName : user.email}</div>
+        )}
+        {showLogout && (
+          <button className="navbar-logout" onClick={handleLogout}>Logout</button>
+        )}
+      </div>
     </nav>
   );
 };
