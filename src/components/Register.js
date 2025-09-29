@@ -48,7 +48,7 @@ const Register = ({ onLoginLink }) => {
     <div className="auth-page">
       <div className="auth-left">
         <h2>Welcome!</h2>
-  <p><span className="highlight">This is the Car Modification AI tool. Use it to identify and mention parts of your vehicle. The integrated ChatBot can assist you with further details and support for your car modification journey.</span></p>
+  <p>This is the Car Modification AI tool. Use it to identify and mention parts of your vehicle. The integrated ChatBot can assist you with further details and support for your car modification journey.</p>
         <button className="auth-signup-btn" onClick={handleLoginLink}>SIGN IN</button>
         <div className="auth-illustration">
           <AuthIllustration />
