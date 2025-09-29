@@ -5,7 +5,7 @@ import "./Navbar.scss";
 const Navbar = () => (
   <nav className="navbar">
     <div className="navbar-center">
-  <span style={{ fontSize: '2rem', marginRight: '1rem' }}>🏎️</span>
+  <img src={process.env.PUBLIC_URL + '/image.png'} alt="Car Logo" style={{ height: '2.2rem', marginRight: '1rem', verticalAlign: 'middle' }} />
       <span className="navbar-logo">CAR WEBAPP</span>
     </div>
   </nav>

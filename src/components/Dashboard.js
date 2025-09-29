@@ -1,7 +1,6 @@
 
 import "./Dashboard.scss";
 import React from "react";
-import Navbar from "./Navbar";
 import StarfallBackground from "./StarfallBackground";
 
 const Dashboard = () => {
@@ -9,7 +8,6 @@ const Dashboard = () => {
     <div className="App" style={{ minHeight: '100vh', background: '#000', position: 'relative', zIndex: 1 }}>
       <StarfallBackground />
       <div style={{ position: 'relative', zIndex: 2 }}>
-        <Navbar />
         <div className="dashboard-cards-container">
           <div className="dashboard-card" tabIndex={0}>
             <span role="img" aria-label="car" style={{fontSize: '2.5rem'}}>🚗</span>
